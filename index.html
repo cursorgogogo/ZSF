@@ -265,6 +265,8 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      position: relative;
+      z-index: 101;
     }
 
     .nav-logo {
@@ -307,6 +309,43 @@
     .nav.scrolled .nav-links a {
       color: var(--ink-muted);
     }
+
+    /* 移动端菜单按钮 */
+    .nav-toggle {
+      display: none;
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      border: none;
+      background: none;
+      cursor: pointer;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--ink);
+      transition: all 0.3s;
+    }
+
+    .nav-toggle.active span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+
+    .nav-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-toggle.active span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .nav-overlay { display: none; }
 
     /* ========== 内容区 - 浅色自然背景 ========== */
     .main {
@@ -529,9 +568,43 @@
       .hero-zsf-words { gap: 20px 32px; }
       .zsf-word-en { letter-spacing: 0.1em; }
       .zsf-word-cn { letter-spacing: 0.2em; }
-      .nav-links { display: none; }
       .list-item { padding: 16px 0; }
       .footer-zsf { gap: 24px; }
+
+      .nav-toggle { display: flex; }
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 280px;
+        max-width: 85vw;
+        background: var(--cream);
+        flex-direction: column;
+        gap: 0;
+        padding: 80px 32px 32px;
+        box-shadow: -4px 0 24px rgba(0,0,0,0.08);
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        z-index: 99;
+      }
+      .nav.open .nav-links {
+        transform: translateX(0);
+      }
+      .nav-links a {
+        padding: 16px 0;
+        font-size: 1rem;
+        border-bottom: 1px solid rgba(44,62,56,0.06);
+      }
+      .nav-links a:last-child { border-bottom: none; }
+      .nav-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.3);
+        z-index: 98;
+      }
+      .nav.open .nav-overlay { display: block; }
     }
   </style>
 </head>
@@ -539,6 +612,10 @@
   <nav class="nav" id="nav">
     <div class="nav-inner">
       <a href="#" class="nav-logo"><img src="assets/img/taiji.svg" alt="" class="taiji-icon">ZSF</a>
+      <button class="nav-toggle" id="navToggle" aria-label="打开菜单">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-overlay" id="navOverlay"></div>
       <div class="nav-links">
         <a href="#intro">缘起</a>
         <a href="#focus">专注</a>
@@ -666,9 +743,35 @@
   </footer>
 
   <script>
+    const nav = document.getElementById('nav');
+    const navToggle = document.getElementById('navToggle');
+    const navOverlay = document.getElementById('navOverlay');
+
     window.addEventListener('scroll', () => {
-      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 100);
+      nav.classList.toggle('scrolled', window.scrollY > 100);
     });
+
+    function openMenu() {
+      nav.classList.add('open');
+      navToggle.classList.add('active');
+      navToggle.setAttribute('aria-label', '关闭菜单');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+      nav.classList.remove('open');
+      navToggle.classList.remove('active');
+      navToggle.setAttribute('aria-label', '打开菜单');
+      document.body.style.overflow = '';
+    }
+
+    navToggle.addEventListener('click', () => {
+      nav.classList.contains('open') ? closeMenu() : openMenu();
+    });
+    navOverlay.addEventListener('click', closeMenu);
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.addEventListener('click', closeMenu);
+    });
+  </script>
 
     // 背景图轮播：夕阳/云雾山景，每 8 秒切换
     (function() {
