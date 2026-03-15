@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ZSF · 疗愈精选 | 放空 · 平静 · 心流</title>
+  <meta name="description" content="ZSF 助你在信息洪流中找回专注、睡眠与内心平静。精选专注、睡眠、放松、自律与省钱资源，助你达到放空·平静·心流的状态。">
+  <title>ZSF · 在喧嚣中安放自己 | 放空 · 平静 · 心流</title>
   <link rel="preconnect" href="https://images.unsplash.com">
   <link rel="preload" href="https://images.unsplash.com/photo-1695651941791-1c7d6ec80755?auto=format&fit=crop&w=1920&q=85" as="image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -319,6 +320,39 @@
       margin: 0 auto;
     }
 
+    /* 定位说明区 */
+    .intro-block {
+      padding: 48px 0 56px;
+      border-bottom: 1px solid rgba(44,62,56,0.08);
+    }
+
+    .intro-block h2 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 20px;
+      letter-spacing: 0.05em;
+    }
+
+    .intro-block .problem {
+      color: var(--ink-muted);
+      font-size: 0.95rem;
+      line-height: 1.9;
+      margin-bottom: 16px;
+    }
+
+    .intro-block .goal {
+      color: var(--ink-light);
+      font-size: 0.95rem;
+      line-height: 1.9;
+    }
+
+    .intro-block .goal strong {
+      color: var(--jade);
+      font-weight: 500;
+    }
+
     .section {
       padding: 64px 0;
       border-bottom: 1px solid rgba(44,62,56,0.08);
@@ -506,6 +540,7 @@
     <div class="nav-inner">
       <a href="#" class="nav-logo"><img src="assets/img/taiji.svg" alt="" class="taiji-icon">ZSF</a>
       <div class="nav-links">
+        <a href="#intro">缘起</a>
         <a href="#focus">专注</a>
         <a href="#sleep">睡眠</a>
         <a href="#relax">放松</a>
@@ -541,9 +576,9 @@
           <span class="zsf-word-cn">心流</span>
         </div>
       </div>
-      <h1 class="hero-title">疗愈精选</h1>
+      <h1 class="hero-title">助你达到 ZSF 状态</h1>
       <p class="hero-desc">
-        专注 · 睡眠 · 放松 · 自律 · 省钱——精选疗愈资源，助你找回内心的秩序与安宁。
+        在信息洪流中，少即是多。精选专注、睡眠、放松、自律与省钱资源，助你找回放空·平静·心流。
       </p>
       <div class="taiji-wrap"><img src="assets/img/taiji.svg" alt="" class="taiji-img"></div>
     </div>
@@ -552,10 +587,16 @@
 
   <main class="main">
     <div class="container">
+      <div class="intro-block" id="intro">
+        <h2>在这个时代</h2>
+        <p class="problem">当注意力被无限切割、睡眠被屏幕侵占、内心难有片刻安宁——我们需要的，或许不是更多，而是更少。</p>
+        <p class="goal">精选专注、睡眠、放松、自律与省钱相关资源，<strong>助你找回放空·平静·心流</strong>。</p>
+      </div>
+
       <section class="section" id="focus">
         <div class="section-header">
           <div class="section-label">专注</div>
-          <h2 class="section-title">提升注意力 · 进入心流</h2>
+          <h2 class="section-title">在信息洪流中保持专注 · 进入心流</h2>
         </div>
         <ul class="list">
           <li class="list-item"><span class="list-num">01</span><span class="list-text">专注歌单（亲测能进入心流的音乐）</span></li>
@@ -568,7 +609,7 @@
       <section class="section" id="sleep">
         <div class="section-header">
           <div class="section-label">睡眠</div>
-          <h2 class="section-title">助眠 · 睡眠质量</h2>
+          <h2 class="section-title">找回优质睡眠 · 恢复生物节律</h2>
         </div>
         <ul class="list">
           <li class="list-item"><span class="list-num">01</span><span class="list-text">助眠音频精选</span></li>
@@ -581,7 +622,7 @@
       <section class="section" id="relax">
         <div class="section-header">
           <div class="section-label">放松</div>
-          <h2 class="section-title">呼吸 · 冥想 · 压力管理</h2>
+          <h2 class="section-title">安放焦虑 · 呼吸 · 冥想 · 压力管理</h2>
         </div>
         <ul class="list">
           <li class="list-item"><span class="list-num">01</span><span class="list-text">呼吸练习音频 + 图解</span></li>
@@ -594,7 +635,7 @@
       <section class="section" id="discipline">
         <div class="section-header">
           <div class="section-label">自律</div>
-          <h2 class="section-title">习惯养成 · 打卡追踪</h2>
+          <h2 class="section-title">与数字世界保持距离 · 习惯养成</h2>
         </div>
         <ul class="list">
           <li class="list-item"><span class="list-num">01</span><span class="list-text">打卡模板</span></li>
@@ -606,7 +647,7 @@
       <section class="section" id="save">
         <div class="section-header">
           <div class="section-label">省钱</div>
-          <h2 class="section-title">记账 · 预算 · 省钱技巧</h2>
+          <h2 class="section-title">简朴生活 · 减少消费焦虑</h2>
         </div>
         <ul class="list">
           <li class="list-item"><span class="list-num">01</span><span class="list-text">记账模板</span></li>
@@ -618,10 +659,10 @@
       <section class="section" id="about">
         <div class="section-header">
           <div class="section-label">关于</div>
-          <h2 class="section-title">精选 · 持续更新 · 免费开放</h2>
+          <h2 class="section-title">助你达到放空·平静·心流</h2>
         </div>
         <div class="about-content">
-          <p>精选疗愈资源，持续更新，免费开放。有好资源推荐，欢迎告诉我。</p>
+          <p>在信息过载的时代，精选专注、睡眠、放松、自律与省钱相关资源，助你找回内心的秩序与安宁。持续更新，免费开放。有好资源推荐，欢迎告诉我。</p>
           <a href="#" class="wechat-btn">微信入口 →</a>
         </div>
       </section>
@@ -636,7 +677,7 @@
       <span>Flow<em>心流</em></span>
     </div>
     <div class="footer-domain">zsf.ai</div>
-    <div class="footer-tagline">疗愈精选 · 持续更新</div>
+    <div class="footer-tagline">在喧嚣中安放自己 · 放空 · 平静 · 心流</div>
   </footer>
 
   <script>
