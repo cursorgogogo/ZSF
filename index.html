@@ -10,7 +10,7 @@
   <link rel="preload" href="https://images.unsplash.com/photo-1695651941791-1c7d6ec80755?auto=format&fit=crop&w=1920&q=85" as="image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400&family=Noto+Sans+SC:wght@300;400&display=swap" rel="stylesheet">
   <style>
     :root {
       --ink: #2c3e38;
@@ -35,6 +35,8 @@
       line-height: 1.7;
       font-size: 16px;
       min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     .page { position: relative; }
@@ -112,7 +114,7 @@
     .hero-brand {
       font-family: 'Noto Serif SC', serif;
       font-size: clamp(4rem, 12vw, 8rem);
-      font-weight: 500;
+      font-weight: 300;
       letter-spacing: 0.25em;
       color: var(--ink);
       margin-bottom: 20px;
@@ -143,7 +145,7 @@
     .zsf-word-en {
       font-family: 'Noto Serif SC', serif;
       font-size: clamp(1.4rem, 3vw, 2rem);
-      font-weight: 500;
+      font-weight: 300;
       color: var(--ink);
       letter-spacing: 0.15em;
       text-shadow: 0 1px 3px rgba(255,255,255,0.9);
@@ -151,16 +153,16 @@
 
     .zsf-word-cn {
       font-size: clamp(1rem, 1.5vw, 1.25rem);
-      color: var(--ink-light);
+      color: var(--ink);
       letter-spacing: 0.3em;
-      font-weight: 400;
+      font-weight: 300;
       text-shadow: 0 1px 2px rgba(255,255,255,0.9);
     }
 
     .hero-title {
       font-family: 'Noto Serif SC', serif;
       font-size: clamp(2rem, 5vw, 3.5rem);
-      font-weight: 500;
+      font-weight: 300;
       color: var(--ink);
       margin-bottom: 28px;
       letter-spacing: 0.15em;
@@ -172,9 +174,10 @@
       max-width: 520px;
       margin: 0 auto 48px;
       font-size: clamp(0.95rem, 1.5vw, 1.1rem);
-      color: var(--ink-light);
+      color: var(--ink);
       line-height: 1.9;
-      font-weight: 400;
+      font-weight: 300;
+      word-break: keep-all;
       letter-spacing: 0.05em;
       text-shadow: 0 1px 2px rgba(255,255,255,0.9);
       animation: fadeUp 1.2s ease-out 0.6s both;
@@ -239,7 +242,7 @@
       bottom: 40px;
       left: 50%;
       transform: translateX(-50%);
-      color: var(--ink-muted);
+      color: var(--ink-light);
       font-size: 0.8rem;
       letter-spacing: 0.2em;
       animation: bounce 2s ease-in-out infinite;
@@ -291,7 +294,7 @@
       align-items: center;
       gap: 12px;
       font-family: 'Noto Serif SC', serif;
-      font-weight: 500;
+      font-weight: 300;
       font-size: 1.25rem;
       letter-spacing: 0.2em;
       color: var(--ink);
@@ -312,10 +315,11 @@
       gap: 40px;
       font-size: 0.95rem;
       font-weight: 400;
+      -webkit-font-smoothing: antialiased;
     }
 
     .nav-links a {
-      color: var(--ink-muted);
+      color: var(--ink);
       text-decoration: none;
       transition: color 0.2s;
       letter-spacing: 0.1em;
@@ -324,7 +328,7 @@
     .nav-links a:hover { color: var(--jade); }
 
     .nav.scrolled .nav-links a {
-      color: var(--ink-muted);
+      color: var(--ink);
     }
 
     /* 移动端菜单按钮 */
@@ -385,28 +389,30 @@
     .intro-block h2 {
       font-family: 'Noto Serif SC', serif;
       font-size: 1.25rem;
-      font-weight: 500;
+      font-weight: 400;
       color: var(--ink);
       margin-bottom: 20px;
       letter-spacing: 0.05em;
     }
 
     .intro-block .problem {
-      color: var(--ink-muted);
+      color: var(--ink-light);
       font-size: 0.95rem;
+      font-weight: 400;
       line-height: 1.9;
       margin-bottom: 16px;
     }
 
     .intro-block .goal {
-      color: var(--ink-light);
+      color: var(--ink);
       font-size: 0.95rem;
+      font-weight: 400;
       line-height: 1.9;
     }
 
     .intro-block .goal strong {
       color: var(--jade);
-      font-weight: 500;
+      font-weight: 400;
     }
 
     .section {
@@ -429,8 +435,8 @@
       gap: 12px;
       font-size: 0.8rem;
       letter-spacing: 0.25em;
-      color: var(--jade-pale);
-      font-weight: 500;
+      color: var(--jade);
+      font-weight: 400;
       margin-bottom: 12px;
     }
 
@@ -446,7 +452,7 @@
     .section-title {
       font-family: 'Noto Serif SC', serif;
       font-size: clamp(1.5rem, 3vw, 2rem);
-      font-weight: 500;
+      font-weight: 300;
       color: var(--ink);
       letter-spacing: 0.08em;
     }
@@ -478,16 +484,17 @@
       align-items: center;
       justify-content: center;
       font-size: 1rem;
-      color: var(--jade-pale);
-      font-weight: 500;
+      color: var(--jade);
+      font-weight: 400;
       border: 1px solid rgba(122,154,138,0.4);
       border-radius: 50%;
     }
 
     .list-text {
       flex: 1;
-      color: var(--ink-light);
+      color: var(--ink);
       font-size: 1.05rem;
+      font-weight: 400;
       letter-spacing: 0.03em;
     }
 
@@ -502,8 +509,9 @@
     .about-content { max-width: 560px; }
 
     .about-content p {
-      color: var(--ink-muted);
+      color: var(--ink-light);
       font-size: 1.05rem;
+      font-weight: 400;
       line-height: 1.9;
       margin-bottom: 28px;
     }
@@ -555,28 +563,32 @@
     .footer-zsf span {
       font-family: 'Noto Serif SC', serif;
       font-size: 1.1rem;
-      color: var(--ink-light);
+      font-weight: 400;
+      color: var(--ink);
       letter-spacing: 0.1em;
     }
 
     .footer-zsf span em {
       font-style: normal;
       font-size: 0.9rem;
-      color: var(--ink-muted);
+      font-weight: 400;
+      color: var(--ink-light);
       margin-left: 6px;
     }
 
     .footer-domain {
       font-family: 'Noto Serif SC', serif;
       font-size: 1.25rem;
+      font-weight: 400;
       color: var(--jade);
       margin-bottom: 8px;
       letter-spacing: 0.15em;
     }
 
     .footer-tagline {
-      font-size: 0.9rem;
-      color: var(--ink-muted);
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: var(--ink-light);
       letter-spacing: 0.1em;
     }
 
@@ -610,7 +622,9 @@
       }
       .nav-links a {
         padding: 16px 0;
-        font-size: 1rem;
+        font-size: 1.05rem;
+        font-weight: 400;
+        color: var(--ink);
         border-bottom: 1px solid rgba(44,62,56,0.06);
       }
       .nav-links a:last-child { border-bottom: none; }
@@ -678,7 +692,7 @@
       </div>
       <h1 class="hero-title">助你达到 ZSF 状态</h1>
       <p class="hero-desc">
-        在信息洪流中，少即是多。精选专注、睡眠、放松与自律资源，助你找回放空·平静·心流。
+        精选专注、睡眠、放松与自律资源，<br>助你找回放空·平静·心流。
       </p>
       <div class="taiji-wrap"><img src="assets/img/taiji.svg" alt="" class="taiji-img"></div>
     </div>
@@ -688,7 +702,7 @@
   <main class="main">
     <div class="container">
       <div class="intro-block" id="intro">
-        <h2>在这个时代</h2>
+        <h2>在信息洪流中，少即是多</h2>
         <p class="problem">当注意力被无限切割、睡眠被屏幕侵占、内心难有片刻安宁——我们需要的，或许不是更多，而是更少。</p>
         <p class="goal">精选专注、睡眠、放松与自律相关资源，<strong>助你找回放空·平静·心流</strong>。</p>
       </div>
