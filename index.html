@@ -25,7 +25,7 @@
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; height: 100%; }
 
     body {
       font-family: 'Noto Sans SC', sans-serif;
@@ -34,7 +34,7 @@
       color: var(--ink);
       line-height: 1.7;
       font-size: 16px;
-      min-height: 100vh;
+      min-height: 100%;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
@@ -45,6 +45,9 @@
     .hero {
       position: relative;
       min-height: 100vh;
+      min-height: 100dvh;
+      height: 100vh;
+      height: 100dvh;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -67,8 +70,10 @@
       inset: 0;
       width: 100%;
       height: 100%;
+      min-width: 100%;
+      min-height: 100%;
       object-fit: cover;
-      object-position: center 40%;
+      object-position: center center;
       opacity: 0;
       transition: opacity 1.5s ease-in-out;
     }
@@ -144,7 +149,7 @@
 
     .zsf-word-en {
       font-family: 'Noto Serif SC', serif;
-      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
       font-weight: 300;
       color: var(--ink);
       letter-spacing: 0.15em;
@@ -152,7 +157,7 @@
     }
 
     .zsf-word-cn {
-      font-size: clamp(1rem, 1.5vw, 1.25rem);
+      font-size: clamp(1.2rem, 2vw, 1.5rem);
       color: var(--ink);
       letter-spacing: 0.3em;
       font-weight: 300;
@@ -720,18 +725,9 @@
       <video autoplay muted loop playsinline>
         <source src="https://videos.pexels.com/video-files/4287970/4287970-uhd_2560_1440_24fps.mp4" type="video/mp4">
       </video>
-      <!-- Zero 放空 · Stillness 平静 · Flow 心流 -->
-      <!-- Zero 放空 -->
-      <video autoplay muted loop playsinline>
-        <source src="https://videos.pexels.com/video-files/4370833/4370833-uhd_2562_1440_30fps.mp4" type="video/mp4">
-      </video>
-      <video autoplay muted loop playsinline>
-        <source src="https://videos.pexels.com/video-files/1572432/1572432-uhd_2560_1440_24fps.mp4" type="video/mp4">
-      </video>
       <video autoplay muted loop playsinline>
         <source src="https://videos.pexels.com/video-files/31320313/13370234_2560_1440_30fps.mp4" type="video/mp4">
       </video>
-      <!-- Stillness 平静 -->
       <video autoplay muted loop playsinline>
         <source src="https://videos.pexels.com/video-files/7385122/7385122-uhd_2560_1440_30fps.mp4" type="video/mp4">
       </video>
