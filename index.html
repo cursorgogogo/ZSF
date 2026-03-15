@@ -248,6 +248,43 @@
       animation: bounce 2s ease-in-out infinite;
     }
 
+    /* 背景切换按钮 */
+    .hero-bg-nav {
+      position: absolute;
+      bottom: 40px;
+      right: 32px;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-bg-btn {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(44,62,56,0.2);
+      border-radius: 50%;
+      background: rgba(246,248,244,0.7);
+      backdrop-filter: blur(8px);
+      color: var(--ink);
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .hero-bg-btn:hover {
+      background: rgba(92,124,107,0.2);
+      border-color: var(--jade);
+      color: var(--jade);
+    }
+
+    .hero-bg-btn:active {
+      transform: scale(0.95);
+    }
+
     .hero-scroll::after {
       content: '↓';
       display: block;
@@ -608,6 +645,8 @@
     }
 
     @media (max-width: 768px) {
+      .hero-bg-nav { bottom: 24px; right: 20px; }
+      .hero-bg-btn { width: 38px; height: 38px; font-size: 1rem; }
       .hero-brand { letter-spacing: 0.15em; }
       .hero-zsf-words { gap: 20px 32px; }
       .zsf-word-en { letter-spacing: 0.1em; }
@@ -681,19 +720,11 @@
       <video autoplay muted loop playsinline>
         <source src="https://videos.pexels.com/video-files/4287970/4287970-uhd_2560_1440_24fps.mp4" type="video/mp4">
       </video>
-      <video autoplay muted loop playsinline>
-        <source src="https://videos.pexels.com/video-files/28975228/12534255_2560_1440_30fps.mp4" type="video/mp4">
-      </video>
-      <video autoplay muted loop playsinline>
-        <source src="https://videos.pexels.com/video-files/3121327/3121327-uhd_2560_1440_24fps.mp4" type="video/mp4">
-      </video>
-      <img src="https://images.unsplash.com/photo-1695651941791-1c7d6ec80755?auto=format&fit=crop&w=2880&q=95" alt="">
       <img src="https://images.unsplash.com/photo-1558469070-b0bb906830a2?auto=format&fit=crop&w=2880&q=95" alt="">
-      <img src="https://images.unsplash.com/photo-1694785918647-b392a36aec75?auto=format&fit=crop&w=2880&q=95" alt="">
       <img src="https://images.unsplash.com/photo-1675972846375-de63b5de9cff?auto=format&fit=crop&w=2880&q=95" alt="">
-      <img src="https://images.unsplash.com/photo-1713137444816-f8f6aff012a2?auto=format&fit=crop&w=2880&q=95" alt="">
-      <img src="https://images.unsplash.com/photo-1767869669430-90236ff4daa4?auto=format&fit=crop&w=2880&q=95" alt="">
-      <img src="https://images.unsplash.com/photo-1598441173408-d7d23fd4132b?auto=format&fit=crop&w=2880&q=95" alt="">
+      <img src="https://images.unsplash.com/photo-1722855047132-b4be43ca86ed?auto=format&fit=crop&w=2880&q=95" alt="">
+      <img src="https://images.unsplash.com/photo-1746950862748-df7d2c5af81d?auto=format&fit=crop&w=2880&q=95" alt="">
+      <img src="https://images.unsplash.com/photo-1720939485733-43c874b6044d?auto=format&fit=crop&w=2880&q=95" alt="">
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
@@ -719,6 +750,10 @@
       <div class="taiji-wrap"><img src="assets/img/taiji.svg" alt="" class="taiji-img"></div>
     </div>
     <div class="hero-scroll">向下探索</div>
+    <div class="hero-bg-nav" aria-label="切换背景">
+      <button class="hero-bg-btn" id="bgPrev" aria-label="上一张">‹</button>
+      <button class="hero-bg-btn" id="bgNext" aria-label="下一张">›</button>
+    </div>
   </header>
 
   <main class="main">
@@ -833,19 +868,31 @@
     });
   </script>
   <script>
-    // 背景轮播：视频 + 图片，每 10 秒切换
+    // 背景轮播：视频 + 图片，每 10 秒切换，支持手动切换
     (function() {
       const items = document.querySelectorAll('.hero-bg video, .hero-bg img');
       if (items.length < 2) return;
       let idx = 0;
+      let autoTimer;
+
       function switchTo(i) {
         items[idx].classList.remove('active');
         if (items[idx].tagName === 'VIDEO') items[idx].pause();
-        idx = i;
+        idx = (i + items.length) % items.length;
         items[idx].classList.add('active');
         if (items[idx].tagName === 'VIDEO') items[idx].play().catch(() => {});
+        resetAutoTimer();
       }
-      setInterval(() => switchTo((idx + 1) % items.length), 10000);
+
+      function resetAutoTimer() {
+        clearInterval(autoTimer);
+        autoTimer = setInterval(() => switchTo(idx + 1), 10000);
+      }
+
+      document.getElementById('bgPrev')?.addEventListener('click', () => switchTo(idx - 1));
+      document.getElementById('bgNext')?.addEventListener('click', () => switchTo(idx + 1));
+
+      resetAutoTimer();
     })();
   </script>
 </body>
