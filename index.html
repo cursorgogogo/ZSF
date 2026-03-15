@@ -59,6 +59,7 @@
       background: linear-gradient(135deg, #e8ede8 0%, #e2e8e2 50%, #eef2eb 100%);
     }
 
+    .hero-bg video,
     .hero-bg img {
       position: absolute;
       inset: 0;
@@ -66,11 +67,15 @@
       height: 100%;
       object-fit: cover;
       object-position: center 40%;
-      animation: kenburns 20s ease-out infinite alternate;
       opacity: 0;
       transition: opacity 1.5s ease-in-out;
     }
 
+    .hero-bg img {
+      animation: kenburns 20s ease-out infinite alternate;
+    }
+
+    .hero-bg video.active,
     .hero-bg img.active {
       opacity: 1;
       z-index: 1;
@@ -86,12 +91,12 @@
       inset: 0;
       z-index: 1;
       background:
-        radial-gradient(ellipse 80% 60% at 50% 45%, rgba(252,253,251,0.85) 0%, transparent 70%),
+        radial-gradient(ellipse 80% 60% at 50% 45%, rgba(252,253,251,0.55) 0%, transparent 70%),
         linear-gradient(
           180deg,
-          rgba(246,248,244,0.4) 0%,
-          rgba(246,248,244,0.6) 45%,
-          rgba(246,248,244,0.95) 100%
+          rgba(246,248,244,0.2) 0%,
+          rgba(246,248,244,0.35) 45%,
+          rgba(246,248,244,0.88) 100%
         );
     }
 
@@ -641,12 +646,18 @@
 
   <header class="hero">
     <div class="hero-bg">
-      <img src="https://images.unsplash.com/photo-1695651941791-1c7d6ec80755?auto=format&fit=crop&w=1920&q=85" alt="" class="active">
-      <img src="https://images.unsplash.com/photo-1558469070-b0bb906830a2?auto=format&fit=crop&w=1920&q=85" alt="">
-      <img src="https://images.unsplash.com/photo-1694785918647-b392a36aec75?auto=format&fit=crop&w=1920&q=85" alt="">
-      <img src="https://images.unsplash.com/photo-1478133845252-9db958c51fa5?auto=format&fit=crop&w=1920&q=85" alt="">
-      <img src="https://images.unsplash.com/photo-1764399125329-141992e701b1?auto=format&fit=crop&w=1920&q=85" alt="">
-      <img src="https://images.unsplash.com/photo-1514920735211-8c697444a248?auto=format&fit=crop&w=1920&q=85" alt="">
+      <video class="active" autoplay muted loop playsinline>
+        <source src="https://videos.pexels.com/video-files/2711145/2711145-uhd_2560_1440_24fps.mp4" type="video/mp4">
+      </video>
+      <video autoplay muted loop playsinline>
+        <source src="https://videos.pexels.com/video-files/4922988/4922988-uhd_2560_1440_24fps.mp4" type="video/mp4">
+      </video>
+      <video autoplay muted loop playsinline>
+        <source src="https://videos.pexels.com/video-files/4287970/4287970-uhd_2560_1440_24fps.mp4" type="video/mp4">
+      </video>
+      <img src="https://images.unsplash.com/photo-1695651941791-1c7d6ec80755?auto=format&fit=crop&w=1920&q=90" alt="">
+      <img src="https://images.unsplash.com/photo-1558469070-b0bb906830a2?auto=format&fit=crop&w=1920&q=90" alt="">
+      <img src="https://images.unsplash.com/photo-1694785918647-b392a36aec75?auto=format&fit=crop&w=1920&q=90" alt="">
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
@@ -785,16 +796,19 @@
     });
   </script>
   <script>
-    // 背景图轮播：夕阳/云雾山景，每 8 秒切换
+    // 背景轮播：视频 + 图片，每 10 秒切换
     (function() {
-      const imgs = document.querySelectorAll('.hero-bg img');
-      if (imgs.length < 2) return;
+      const items = document.querySelectorAll('.hero-bg video, .hero-bg img');
+      if (items.length < 2) return;
       let idx = 0;
-      setInterval(() => {
-        imgs[idx].classList.remove('active');
-        idx = (idx + 1) % imgs.length;
-        imgs[idx].classList.add('active');
-      }, 8000);
+      function switchTo(i) {
+        items[idx].classList.remove('active');
+        if (items[idx].tagName === 'VIDEO') items[idx].pause();
+        idx = i;
+        items[idx].classList.add('active');
+        if (items[idx].tagName === 'VIDEO') items[idx].play().catch(() => {});
+      }
+      setInterval(() => switchTo((idx + 1) % items.length), 10000);
     })();
   </script>
 </body>
